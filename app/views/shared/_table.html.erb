@@ -20,11 +20,15 @@
         <td><%= entry.need_by %></td>
         <td><%= entry.file_format %></td>
         <td><%= entry.scan_type %></td>
-        <td><%= link_to entry.scanned.to_s, '#' %></td>
-        <td><%= link_to "Edit", '#' %></td>
         <td>
-          <%= link_to "Delete", entry, method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to entry.scanned.to_s, '#' %>
         </td>
+        <% if logged_in? %>
+          <td><%= link_to "Edit", '#' %></td>
+          <td>
+            <%= link_to "Delete", entry, method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   <% end %>

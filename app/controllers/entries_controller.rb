@@ -23,6 +23,7 @@ class EntriesController < ApplicationController
   end
 
   def destroy
+    @entry = Entry.find(params[:id])
     @entry.destroy
     flash[:success] = "Sample deleted"
     redirect_to request.referrer || root_url
@@ -30,7 +31,7 @@ class EntriesController < ApplicationController
 
   def toggle_scanned
     @entry = Entry.find(params[:id])
-    @entry.scanned = true
+    @entry.toggle!(:scanned)
   end
 
   private
@@ -41,6 +42,13 @@ class EntriesController < ApplicationController
 
     def correct_user
       @entry = current_user.entries.find_by(id: params[:id])
-      redirect_to root_url if @entry.nil?
+      if @entry.nil?
+        redirect_to root_url
+        flash[:danger] = "This sample does not belong to you."
+      end
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

@@ -14,9 +14,14 @@ module UserSessionsHelper
   def logged_in?
     !current_user.nil?
   end
-
+  
   def log_out
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  # Stores the URL trying to be accessed
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
   end
 end
