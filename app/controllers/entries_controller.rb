@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user,   only: [:edit, :destroy]
   before_action :admin_user,     only: :toggle_scanned
 
   def index
