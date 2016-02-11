@@ -1,0 +1,23 @@
+
+<h2>Add to queue</h2>
+<%= form_for(@entry) do |f| %>
+  <div class="field">
+
+    <%= f.label :sample %>
+    <%= f.text_field :sample,      placeholder: "Sample ID" %>
+
+    <%= f.label :charge %>
+    <%= f.text_field :charge,      placeholder: "Charge Number" %>
+
+    <%= f.label :need_by %>
+    <%= f.text_field :need_by,     placeholder: "(ie. In line or ASAP)" %>
+
+    <%= f.label :file_format %>
+    <%= f.text_field :file_format, placeholder: "(ie. *.x00, *.csv)" %>
+
+    <%= f.label :scan_type %>
+    <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP)" %>
+
+  </div>
+  <%= f.submit "Add", class: "btn btn-primary" %>
+<% end %>

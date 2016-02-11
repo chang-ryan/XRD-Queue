@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @entries = @user.entries
+    @entry = current_user.entries.build if logged_in?
   end
 
   def new

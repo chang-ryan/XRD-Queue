@@ -1,0 +1,14 @@
+<% @entries.each do |entry| %>
+  <% if !entry.scanned %>
+    <tr>
+      <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
+      <td><%= entry.user.name %></td>
+      <td><%= entry.sample %></td>
+      <td><%= entry.charge %></td>
+      <td><%= entry.need_by %></td>
+      <td><%= entry.file_format %></td>
+      <td><%= entry.scan_type %></td>
+      <td><%= entry.scanned %></td>
+    </tr>
+  <% end %>
+<% end %>
