@@ -1,14 +1,35 @@
-<% @entries.each do |entry| %>
-  <% if entry.scanned %>
-    <tr>
-      <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
-      <td><%= entry.user.name %></td>
-      <td><%= entry.sample %></td>
-      <td><%= entry.charge %></td>
-      <td><%= entry.need_by %></td>
-      <td><%= entry.file_format %></td>
-      <td><%= entry.scan_type %></td>
-      <td><%= entry.scanned %></td>
-    </tr>
+<table id="queue">
+  <tr>
+    <td>Date In</td>
+    <td>Requestor</td>
+    <td>Sample &#35;</td>
+    <td>Charge &#35;</td>
+    <td>Need By</td>
+    <td>File Format</td>
+    <td>Scan Type</td>
+    <td>Scanned</td>
+  </tr>
+
+  <% @entries.each do |entry| %>
+    <% if entry.scanned %>
+      <tr>
+        <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
+        <td><%= entry.user.name %></td>
+        <td><%= entry.sample %></td>
+        <td><%= entry.charge %></td>
+        <td><%= entry.need_by %></td>
+        <td><%= entry.file_format %></td>
+        <td><%= entry.scan_type %></td>
+        <td>
+            <%= link_to "#{entry.scanned.to_s}", scan_entry_path(entry), method: :patch %>
+        </td>
+        <% if logged_in? %>
+          <td><%= link_to "Edit", edit_entry_path(entry) %></td>
+          <td>
+            <%= link_to "Delete", entry, method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
+</table>
