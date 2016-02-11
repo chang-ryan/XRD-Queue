@@ -1,0 +1,17 @@
+<% provide(:title, 'Register') %>
+<h1>Register</h1>
+
+<div class="row">
+  <div class="">
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control', placeholder: 'example@hrl.com' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
