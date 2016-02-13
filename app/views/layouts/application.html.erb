@@ -15,8 +15,8 @@
         <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
           <li>
-            <%= link_to "Logout", logout_path, method: :delete %>
             (Logged in as <%= current_user.name %>)
+            <%= link_to "Logout", logout_path, method: :delete %>
           </li>
           <li>
             <%= link_to "Your Queue", current_user %>
