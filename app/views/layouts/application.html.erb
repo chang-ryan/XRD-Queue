@@ -9,30 +9,34 @@
 <body>
 
   <header>
-    <h1>HRL Laboratories X-Ray Diffraction</h1>
-    <nav class="main-nav">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <% if logged_in? %>
+    <div class="wrapper wrapper-space_between">
+      <h1>HRL Laboratories X-Ray Diffraction</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <% if logged_in? %>
           <li>
-            <%= link_to "Logout", logout_path, method: :delete %>
             (Logged in as <%= current_user.name %>)
+            <%= link_to "Logout", logout_path, method: :delete %>
           </li>
           <li>
             <%= link_to "Your Queue", current_user %>
           </li>
-        <% else %>
+          <% else %>
           <li>
             <%= link_to "Login", login_path %>
           </li>
-        <% end %>
-      </ul>
-    </nav>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
+  <div class="alpha">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
   <%= yield %>
 
 </body>

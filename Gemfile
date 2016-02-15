@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 # Ryan's stuff
 gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'

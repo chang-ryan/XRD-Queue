@@ -1,0 +1,41 @@
+@import "bourbon";
+@import "neat";
+@import "base/base";
+
+header,
+section {
+  @include outer-container;
+  margin-bottom: 2em;
+}
+
+nav {
+  text-align: right;
+}
+
+.wrapper {
+  padding: 0.5em 0 1em 0;
+  @include display(flex);
+}
+.wrapper-space_between {
+  @include justify-content(space-between);
+}
+
+.alpha {
+  text-align: center;
+  margin: 0 auto;
+  .form-control {
+    margin: 0 auto 1em;
+  }
+}
+
+.field {
+}
+
+.alert {
+  text-align: center;
+  border-radius: 0.5em;
+}
+
+.form-control {
+  width: 200px;
+}
