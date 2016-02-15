@@ -66,10 +66,12 @@ class EntriesController < ApplicationController
     end
 
     def correct_user
-      @entry = current_user.entries.find_by(id: params[:id])
-      if @entry.nil?
-        flash[:danger] = "This sample does not belong to you."
-        redirect_to root_url
+      unless current_user.admin?
+        @entry = current_user.entries.find_by(id: params[:id])
+        if @entry.nil?
+          flash[:danger] = "This sample does not belong to you."
+          redirect_to root_url
+        end
       end
     end
 

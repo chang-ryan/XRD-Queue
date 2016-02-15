@@ -54,3 +54,6 @@ gem 'faker'
 
 # To make the password digest, has_secure_password uses a state-of-the-art hash function called bcrypt.
 gem 'bcrypt'
+
+# To deploy to Heroku, we need PostgreSQL
+gem 'pg'
