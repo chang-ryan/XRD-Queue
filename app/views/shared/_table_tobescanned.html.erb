@@ -1,9 +1,9 @@
 <% @entries.each do |entry| %>
-  <% if entry.scanned %>
+  <% if !entry.scanned %>
     <tr>
       <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
       <td><%= entry.user.name %></td>
-      <td><%= entry.sample %></td>
+      <td><%= link_to entry.sample, entry_path(entry) %></td>
       <td><%= entry.charge %></td>
       <td><%= entry.need_by %></td>
       <td><%= entry.file_format %></td>

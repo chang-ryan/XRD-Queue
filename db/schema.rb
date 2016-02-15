@@ -19,10 +19,13 @@ ActiveRecord::Schema.define(version: 20160211220642) do
     t.string   "need_by"
     t.string   "file_format"
     t.string   "scan_type"
-    t.boolean  "scanned",     default: false
+    t.text     "description"
+    t.text     "conditions"
+    t.text     "special_instructions"
+    t.boolean  "scanned",              default: false
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "entries", ["user_id", "created_at"], name: "index_entries_on_user_id_and_created_at"

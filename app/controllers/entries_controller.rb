@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :destroy]
   before_action :correct_user,   only: [:edit, :destroy]
-  before_action :admin_user,     only: :update
+  before_action :admin_user,     only: :toggle_scanned
 
   def index
     @entries = Entry.all
@@ -18,7 +18,15 @@ class EntriesController < ApplicationController
     end
   end
 
-  def update
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
+  def show
+    @entry = Entry.find(params[:id])
+  end
+
+  def toggle_scanned
     @entry = Entry.find(params[:id])
     @entry.toggle!(:scanned)
     flash[:success] = "Sample scanned and archived" if @entry.scanned

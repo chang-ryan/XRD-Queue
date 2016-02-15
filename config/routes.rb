@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'user_sessions/new'
 
-  resources :entries
+  resources :entries, except: :update
   patch '/entries/:id', to: 'entries#toggle_scanned', as: 'scan_entry'
 
   resources :users
