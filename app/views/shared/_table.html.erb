@@ -14,13 +14,12 @@
 
   <% if !@archive_bool %>
     <tbody id="queue-body">
-      <%= render partial: '/shared/table_tobescanned' %>
-    </tbody>
   <% else %>
     <tbody id="archive-body">
-      <%= render partial: '/shared/table_scanned' %>
-    </tbody>
   <% end %>
+
+    <%= render partial: '/shared/table_data' %>
+  </tbody>
 </table>
 
 <% if logged_in? && !@archive_bool %>

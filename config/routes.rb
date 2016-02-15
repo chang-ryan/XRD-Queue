@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get    'signup'  => 'users#new'
   get    'login'   => 'user_sessions#new'
+  get    'admin'   => 'user_sessions#admin_password_check'
   post   'login'   => 'user_sessions#create'
   delete 'logout'  => 'user_sessions#destroy'
 

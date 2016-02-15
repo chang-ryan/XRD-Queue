@@ -2,16 +2,27 @@
 
 <section>
   <h1>Register</h1>
-  <div class="wrapper wrapper-center">
     <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <ul class="alert alert-danger">
+          <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name,   placeholder: 'Jane Doe' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control', placeholder: 'example@hrl.com' %>
+      <%= f.email_field :email, placeholder: 'example@hrl.com' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
-  </div>
 </section>
