@@ -1,0 +1,42 @@
+<table>
+  <thead>
+    <tr>
+      <td>Date In</td>
+      <td>Requestor</td>
+      <td>Sample &#35;</td>
+      <td>Charge &#35;</td>
+      <td>Need By</td>
+      <td>File Format</td>
+      <td>Scan Type</td>
+      <td>Scanned</td>
+    </tr>
+  </thead>
+
+  <% @entries = @unscanned_entries %>
+
+  <tbody>
+    <% @entries.where(:scanned => false).each do |entry| %>
+      <tr>
+        <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
+        <td><%= entry.user.name %></td>
+        <td><%= link_to entry.sample, entry_path(entry) %></td>
+        <td><%= entry.charge %></td>
+        <td><%= entry.need_by %></td>
+        <td><%= entry.file_format %></td>
+        <td><%= entry.scan_type %></td>
+        <td>
+          <% if logged_in? %>
+          <%= link_to "#{entry.scanned.to_s}", scan_entry_path(entry), method: :patch %>
+          <% else %>
+          <%= entry.scanned %>
+          <% end %>
+        </td>
+        <% if logged_in? %>
+        <td><%= link_to "Edit", edit_entry_path(entry) %></td>
+        <td><%= link_to "Delete", entry, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @unscanned_entries, :param_name => 'unscanned_page' %>

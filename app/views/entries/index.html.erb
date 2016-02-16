@@ -1,4 +1,20 @@
+<% provide(:title, "Queue Index") %>
+
 <% @title1 = "Current Queue" %>
 <% @title2 = "Archive" %>
 
-<%= render partial: '/shared/queues' %>
+<!-- Queue -->
+<section class="content">
+  <h1><%= @title1 %></h1>
+  <div id="queue-id"><%= render 'shared/unscanned' %></div>
+
+  <% if logged_in? %>
+    <%= render 'shared/entry_form' %>
+  <% end %>
+</section>
+
+<!-- Archive -->
+<section class="content">
+  <h1><%= @title2 %></h1>
+  <div id="archive-id"><%= render 'shared/scanned' %></div>
+</section>
