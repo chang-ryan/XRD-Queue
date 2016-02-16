@@ -1,17 +1,17 @@
 <% provide(:title, "Log in") %>
 
 <section>
-  <div class="alpha">
-    <h1>Log in</h1>
-      <%= form_for(:session, url: login_path) do |f| %>
+  <h1>Log in</h1>
+    <%= form_for(:session, url: login_path) do |f| %>
 
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
 
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-      <% end %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
 
-      <p>New user? <%= link_to "Register now!", signup_path %></p>
-    </div>
-  </div>
+      <%= f.submit "Log in", class: "btn" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Register now!", signup_path %></p>
 </section>

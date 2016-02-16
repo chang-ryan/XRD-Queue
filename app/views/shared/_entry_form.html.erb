@@ -1,23 +1,27 @@
 <div class="entry-form">
   <h2>Add to queue</h2>
   <%= form_for(@entry) do |f| %>
-    <div class="field">
-
-      <%= f.label :sample %>
-      <%= f.text_field :sample,      placeholder: "Sample ID" %>
-
-      <%= f.label :charge %>
-      <%= f.text_field :charge,      placeholder: "Charge Number" %>
-
-      <%= f.label :need_by %>
-      <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
-
-      <%= f.label :file_format %>
-      <%= f.text_field :file_format, placeholder: "(ie. *.x00, *.csv)" %>
-
-      <%= f.label :scan_type %>
-      <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP)" %>
-
+    <div class="field-container">
+      <div class="field">
+        <%= f.label :sample %>
+        <%= f.text_field :sample,      placeholder: "Sample ID" %>
+      </div>
+      <div class="field">
+        <%= f.label :charge %>
+        <%= f.text_field :charge,      placeholder: "Charge Number" %>
+      </div>
+      <div class="field">
+        <%= f.label :need_by %>
+        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
+      </div>
+      <div class="field">
+        <%= f.label :file_format %>
+        <%= f.text_field :file_format, placeholder: "(ie. .x00, .csv)" %>
+      </div>
+      <div class="field">
+        <%= f.label :scan_type %>
+        <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP)" %>
+      </div>      
     </div>
     <%= f.submit "Add", class: "btn btn-primary" %>
   <% end %>

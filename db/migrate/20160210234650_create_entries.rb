@@ -6,6 +6,9 @@ class CreateEntries < ActiveRecord::Migration
       t.string     :need_by
       t.string     :file_format
       t.string     :scan_type
+      t.text       :description
+      t.text       :conditions
+      t.text       :instructions
       t.boolean    :scanned, default: false
       t.references :user, index: true, foreign_key: true
 

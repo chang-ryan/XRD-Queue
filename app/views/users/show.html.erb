@@ -1,8 +1,6 @@
-<section class="content">
-  <h1>Your Queue</h1>
-  <%= render partial: '/shared/table' %>
-</section>
-<section class="content">
-  <h1>Your Archive</h1>
-  <%= render partial: '/shared/table_scanned' %>
-</section>
+<% provide(:title, "Your Queue") %>
+
+<% @title1 = "Your Queue" %>
+<% @title2 = "Your Archive" %>
+
+<%= render partial: '/shared/queues' %>

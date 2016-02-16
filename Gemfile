@@ -1,8 +1,4 @@
 source 'https://rubygems.org'
-# Ryan's stuff
-gem 'bourbon'
-gem 'neat'
-gem 'bitters'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -47,3 +43,18 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+################
+# Ryan's stuff #
+################
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'faker'
+gem 'will_paginate'
+
+# To make the password digest, has_secure_password uses a state-of-the-art hash function called bcrypt.
+gem 'bcrypt'
+
+# To deploy to Heroku, we need PostgreSQL
+gem 'pg'

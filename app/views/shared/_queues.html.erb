@@ -1,0 +1,10 @@
+<section class="content">
+  <h1><%= @title1 %></h1>
+  <% @archive_bool = false %>
+  <%= render partial: '/shared/table' %>
+</section>
+<section class="content">
+  <h1><%= @title2 %></h1>
+  <% @archive_bool = true %>
+  <%= render partial: '/shared/table' %>
+</section>

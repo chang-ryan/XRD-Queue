@@ -4,13 +4,17 @@ class UserSessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user
+    if user && user.admin?
+      log_in user
+      redirect_to user
+      flash[:success] = 'Admin logged in'
+    elsif user
       # Log the user in and redirect to user's show page
       log_in user
       redirect_to user
       flash[:success] = 'You have successfully logged in'
     else
-      flash.now[:danger] = 'Invalid email, please register your email'
+      flash.now[:danger] = 'Invalid credentials'
       render 'new'
     end
   end
@@ -19,5 +23,4 @@ class UserSessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
-
 end
