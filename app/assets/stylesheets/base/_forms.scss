@@ -59,6 +59,7 @@ select[multiple] {
 
 textarea {
   resize: vertical;
+  width: 100%;
 }
 
 [type="search"] {
@@ -80,4 +81,8 @@ select {
   margin-bottom: $base-spacing;
   max-width: 100%;
   width: auto;
+}
+
+input[type="text"] {
+  width: 100%;
 }

@@ -3,7 +3,7 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.string     :sample
       t.string     :charge
-      t.string     :need_by
+      t.string     :need_by, default: "In Line"
       t.string     :file_format
       t.string     :scan_type
       t.text       :description

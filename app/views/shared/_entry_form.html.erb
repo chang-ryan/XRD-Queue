@@ -11,17 +11,31 @@
         <%= f.text_field :charge,      placeholder: "Charge Number" %>
       </div>
       <div class="field">
-        <%= f.label :need_by %>
-        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
-      </div>
-      <div class="field">
         <%= f.label :file_format %>
-        <%= f.text_field :file_format, placeholder: "(ie. .x00, .csv)" %>
+        <%= f.text_field :file_format, placeholder: "(ie. .x00, .csv, etc.)" %>
       </div>
       <div class="field">
         <%= f.label :scan_type %>
-        <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP)" %>
-      </div>      
+        <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP, etc.)" %>
+      </div>
+      <div class="field">
+        <%= f.label :conditions %>
+        <%= f.text_field :conditions,  placeholder: "(ex. 20 to 80 degrees)" %>
+      </div>
+    </div>
+    <div class="field-container">
+      <div class="box_1-3">
+        <%= f.label :description %>
+        <%= f.text_area :description,  placeholder: "Include sample composition, substrate, etc." %>
+      </div>
+      <div class="box_1-3">
+        <%= f.label :instructions %>
+        <%= f.text_area :instructions, placeholder: "Include specific recipe filename (if applicable) and other relevant information" %>
+      </div>
+      <div class="field">
+        <%= f.label :need_by %>
+        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
+      </div>
     </div>
     <%= f.submit "Add", class: "btn btn-primary" %>
   <% end %>

@@ -1,5 +1,8 @@
 <section>
-  <h1>Details for <%= @entry.sample %></h1>
+  <div class="title">
+    <h1>Details for <%= @entry.sample %></h1>
+    <p>Requested by: <%= @entry.user.name %></p>
+  </div>
   <div class="box">
     <h3>Charge Number</h3>
     <p><%= @entry.charge %></p>

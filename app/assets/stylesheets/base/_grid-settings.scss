@@ -21,3 +21,7 @@ $large-screen-up: new-breakpoint(min-width $large-screen 8);
 .box_1-2 {
   @include span-columns(6);
 }
+
+.box_1-3 {
+  @include span-columns(4);
+}

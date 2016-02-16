@@ -65,7 +65,7 @@ class EntriesController < ApplicationController
   private
 
     def entry_params
-      params.require(:entry).permit(:sample, :charge, :need_by, :file_format, :scan_type)
+      params.require(:entry).permit(:sample, :charge, :need_by, :file_format, :scan_type, :description, :instructions, :conditions)
     end
 
     def correct_user
