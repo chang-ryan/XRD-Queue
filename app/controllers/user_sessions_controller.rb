@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user.admin?
+    if user && user.admin?
       log_in user
       redirect_to user
       flash[:success] = 'Admin logged in'
@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
       redirect_to user
       flash[:success] = 'You have successfully logged in'
     else
-      flash.now[:danger] = 'Invalid email, please register your email'
+      flash.now[:danger] = 'Invalid credentials'
       render 'new'
     end
   end

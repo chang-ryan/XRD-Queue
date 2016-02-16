@@ -3,8 +3,11 @@ class EntriesController < ApplicationController
   before_action :correct_user,   only: [:edit, :destroy]
   before_action :admin_user,     only: :toggle_scanned
 
+  include EntriesHelper
+
   def index
     @entries = Entry.all
+    split_entries(@entries)
     @entry = current_user.entries.build if logged_in?
   end
 

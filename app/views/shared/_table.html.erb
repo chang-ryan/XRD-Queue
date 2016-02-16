@@ -1,4 +1,4 @@
-<table id="queue">
+<table class=".queue">
   <thead>
     <tr>
       <td>Date In</td>
@@ -21,6 +21,12 @@
     <%= render partial: '/shared/table_data' %>
   </tbody>
 </table>
+<% if !@archive_bool %>
+  <%= will_paginate @unscanned_entries %>
+<% end %>
+<% if @archive_bool %>
+  <%= will_paginate @scanned_entries %>
+<% end %>
 
 <% if logged_in? && !@archive_bool %>
   <%= render 'shared/entry_form' %>

@@ -12,3 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+$(function(){
+  $(".pagination a").on("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+});

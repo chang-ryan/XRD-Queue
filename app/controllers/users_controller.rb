@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+include EntriesHelper
 
   def show
     @user = User.find(params[:id])
     @entries = @user.entries
+    split_entries(@entries)
     @entry = current_user.entries.build if logged_in?
   end
 

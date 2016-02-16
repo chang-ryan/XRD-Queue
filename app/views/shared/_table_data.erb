@@ -1,3 +1,9 @@
+<% if !@archive_bool %>
+  <% @entries = @unscanned_entries %>
+<% elsif @archive_bool %>
+  <% @entries = @scanned_entries %>
+<% end %>
+
 <% @entries.where(:scanned => @archive_bool).each do |entry| %>
   <tr>
     <td><%= entry.created_at.strftime("%-d %b %Y") %></td>
