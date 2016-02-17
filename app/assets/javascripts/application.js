@@ -14,9 +14,18 @@
 //= require jquery_ujs
 
 $(function() {
+
+  // AJAXify pagination links
   $(document).on("click", ".pagination a", function() {
     $.getScript(this.href, function(){
+      console.log("AJAX!");
     });
     return false;
   });
+
+  // AJAXify search bar
+  $(".search").keyup(function() {
+    $.get(this.action, $(this).serialize(), null, "script");
+  })
+
 });

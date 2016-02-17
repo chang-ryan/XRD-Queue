@@ -7,6 +7,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.all
+    # @entries = Entry.search(params[:search])
     split_entries(@entries)
     @entry = current_user.entries.build if logged_in?
   end

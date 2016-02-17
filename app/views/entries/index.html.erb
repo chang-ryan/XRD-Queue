@@ -6,6 +6,14 @@
 <!-- Queue -->
 <section class="content">
   <h1><%= @title1 %></h1>
+
+  <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
+    <div class="floating-search">
+      <%= text_field_tag :unscanned_search, params[:unscanned_search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+
   <div id="queue-id"><%= render 'shared/unscanned' %></div>
 
   <% if logged_in? %>
@@ -16,5 +24,13 @@
 <!-- Archive -->
 <section class="content">
   <h1><%= @title2 %></h1>
+
+  <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
+    <div class="floating-search">
+      <%= text_field_tag :scanned_search, params[:scanned_search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+
   <div id="archive-id"><%= render 'shared/scanned' %></div>
 </section>

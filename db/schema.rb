@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160215221427) do
   create_table "entries", force: :cascade do |t|
     t.string   "sample"
     t.string   "charge"
-    t.string   "need_by"
+    t.string   "need_by",      default: "In Line"
     t.string   "file_format"
     t.string   "scan_type"
     t.text     "description"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160215221427) do
     t.text     "instructions"
     t.boolean  "scanned",      default: false
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "entries", ["user_id", "created_at"], name: "index_entries_on_user_id_and_created_at"
