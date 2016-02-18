@@ -17,7 +17,7 @@ $(function() {
 
   // AJAXify pagination links
   $(document).on("click", ".pagination a", function() {
-    $.getScript(this.h ref, function(){
+    $.getScript(this.href, function(){
       console.log("AJAX!");
     });
     return false;
