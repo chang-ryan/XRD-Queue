@@ -7,7 +7,6 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.all
-    # @entries = Entry.search(params[:search])
     split_entries(@entries)
     @entry = current_user.entries.build if logged_in?
   end
@@ -28,8 +27,7 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find(params[:id])
-    @entry.update(article_params)
-
+    @entry.update(entry_params)
     flash[:success] = "Entry successfully updated."
     redirect_to entry_path(@entry)
   end

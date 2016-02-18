@@ -9,12 +9,4 @@ class User < ActiveRecord::Base
                                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true
-
-  def self.search
-    if search
-      where('name LIKE :search', search: "%#{search}%")
-    else
-      all
-    end
-  end
 end

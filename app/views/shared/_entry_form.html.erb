@@ -1,5 +1,4 @@
 <div class="entry-form">
-  <h2>Add to queue</h2>
   <%= form_for(@entry) do |f| %>
     <div class="field-container">
       <div class="field">
@@ -37,6 +36,6 @@
         <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
       </div>
     </div>
-    <%= f.submit "Add", class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>

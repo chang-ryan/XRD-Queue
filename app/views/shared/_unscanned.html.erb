@@ -17,7 +17,7 @@
   <tbody>
     <% @entries.each do |entry| %>
       <tr>
-        <td><%= entry.created_at.strftime("%Y %m %d") %></td>
+        <td><%= entry.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= entry.user.name %></td>
         <td><%= link_to entry.sample, entry_path(entry) %></td>
         <td><%= entry.charge %></td>
