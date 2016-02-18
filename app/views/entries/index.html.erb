@@ -8,6 +8,7 @@
   <h1><%= @title1 %></h1>
 
   <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
+  <%= hidden_field_tag :scanned_search, params[:scanned_search] %>
     <div class="floating-search">
       <%= text_field_tag :unscanned_search, params[:unscanned_search] %>
       <%= submit_tag "Search", :name => nil %>
@@ -27,6 +28,7 @@
   <h1><%= @title2 %></h1>
 
   <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
+  <%= hidden_field_tag :unscanned_search, params[:unscanned_search] %>
     <div class="floating-search">
       <%= text_field_tag :scanned_search, params[:scanned_search] %>
       <%= submit_tag "Search", :name => nil %>
