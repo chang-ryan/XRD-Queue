@@ -3,13 +3,7 @@
 <section>
   <h1>Register</h1>
     <%= form_for(@user) do |f| %>
-      <% if @user.errors.any? %>
-        <ul class="alert alert-danger">
-          <% @user.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render 'shared/error_messages' %>
 
       <%= f.label :name %>
       <%= f.text_field :name,   placeholder: 'Jane Doe' %>
