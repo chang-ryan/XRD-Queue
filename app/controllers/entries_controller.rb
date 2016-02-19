@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
       flash[:success] = "Sample added to the queue!"
       redirect_to request.referrer || root_url
     else
-      render 'create'
+      render request.referrer
     end
   end
 

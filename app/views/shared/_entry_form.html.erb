@@ -1,5 +1,6 @@
 <div class="entry-form">
   <%= form_for(@entry) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
     <div class="field-container">
       <div class="field">
         <%= f.label :sample %>
