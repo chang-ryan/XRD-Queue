@@ -6,7 +6,10 @@ class Entry < ActiveRecord::Base
 
   def self.search(search)
     if search
-      joins(:user).where('users.name LIKE :search OR entries.created_at LIKE :search OR sample LIKE :search OR need_by LIKE :search OR scan_type LIKE :search OR charge LIKE :search', search: "%#{search}%")
+      joins(:user).where('users.name LIKE :search OR entries.created_at LIKE :search OR
+                          sample LIKE :search     OR need_by LIKE :search            OR
+                          scan_type LIKE :search  OR charge LIKE :search',
+                          search: "%#{search}%")
     else
       all
     end
