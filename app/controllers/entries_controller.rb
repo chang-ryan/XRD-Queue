@@ -17,7 +17,8 @@ class EntriesController < ApplicationController
       flash[:success] = "Sample added to the queue!"
       redirect_to request.referrer || root_url
     else
-      render request.referrer
+      flash[:danger] = "Please fill out all the required fields."
+      redirect_to request.referrer
     end
   end
 

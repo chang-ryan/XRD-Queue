@@ -3,20 +3,20 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field-container">
       <div class="field">
-        <%= f.label :sample %>
+        <%= f.label :sample, "Sample ID*" %>
         <%= f.text_field :sample,      placeholder: "Sample ID" %>
       </div>
       <div class="field">
-        <%= f.label :charge %>
+        <%= f.label :charge, "Charge Number*" %>
         <%= f.text_field :charge,      placeholder: "Charge Number" %>
+      </div>
+      <div class="field">
+        <%= f.label :scan_type, "Scan Type*" %>
+        <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP, etc.)" %>
       </div>
       <div class="field">
         <%= f.label :file_format %>
         <%= f.text_field :file_format, placeholder: "(ie. .x00, .csv, etc.)" %>
-      </div>
-      <div class="field">
-        <%= f.label :scan_type %>
-        <%= f.text_field :scan_type,   placeholder: "(ie. RC, XRR, CAP, etc.)" %>
       </div>
       <div class="field">
         <%= f.label :conditions %>
@@ -38,5 +38,6 @@
       </div>
     </div>
     <%= f.submit "Submit", class: "btn btn-primary" %>
+    <div>* denotes required field.</div>
   <% end %>
 </div>

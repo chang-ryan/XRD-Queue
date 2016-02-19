@@ -2,7 +2,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
   validates :user_id, presence: true
-  validates :sample, :charge, :need_by, :file_format, :scan_type, presence: true
+  validates :sample, :charge, :need_by, :scan_type, presence: true
 
   def self.search(search)
     if search
