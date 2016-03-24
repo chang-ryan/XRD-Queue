@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch '/entries/:id/scan', to: 'entries#toggle_scanned', as: 'scan_entry'
 
   resources :users
+  resources :account_activations, only: [:edit]
 
   root to: 'entries#index'
 end

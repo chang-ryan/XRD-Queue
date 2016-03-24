@@ -1,7 +1,5 @@
 class UserSessionsController < ApplicationController
   def new
-    flash[:danger] = "Logins are currently closed."
-    redirect_to root_path
   end
 
   def create

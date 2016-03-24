@@ -9,9 +9,9 @@ include EntriesHelper
   end
 
   def new
-    # @user = User.new
-    flash[:danger] = "Registrations are currently closed."
-    redirect_to root_path
+    @user = User.new
+    # flash[:danger] = "Registrations are currently closed."
+    # redirect_to root_path
   end
 
   def create
