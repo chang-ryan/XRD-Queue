@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: :show
+
 include EntriesHelper
 
   def show
@@ -17,7 +19,8 @@ include EntriesHelper
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Account successfully created! Please log in."
+      @user.send_activation_email
+      flash[:success] = "Account successfully created! Please check your email to activate."
       redirect_to root_path
     else
       render 'new'

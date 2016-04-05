@@ -10,19 +10,25 @@ User.create!(name:  "Example User",
              email: "ex@hrl.com",
              password:              "foobar",
              password_confirmation: "foobar",
-             admin: false)
+             admin: false,
+             activated: true,
+             activated_at: Time.zone.now)
 
 User.create!(name:  "Administrator",
-             email: "admin@hrl.com",
+             email: "xrd-admin@hrl.com",
              password:              "galaxy",
              password_confirmation: "galaxy",
-             admin: true)
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 User.create!(name:  "Ryan Chang",
              email: "rchang@hrl.com",
              password:              "asdf",
              password_confirmation: "asdf",
-             admin: true)
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 ryan = User.find_by(email: 'rchang@hrl.com')
 for i in (0..10)
