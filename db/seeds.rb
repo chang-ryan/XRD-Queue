@@ -22,15 +22,15 @@ User.create!(name:  "Administrator",
              activated: true,
              activated_at: Time.zone.now)
 
-User.create!(name:  "Ryan Chang",
-             email: "rchang@hrl.com",
+User.create!(name:  "Another User",
+             email: "an@hrl.com",
              password:              "asdf",
              password_confirmation: "asdf",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
 
-ryan = User.find_by(email: 'rchang@hrl.com')
+another = User.find_by(email: 'an@hrl.com')
 for i in (0..10)
   a = "Sample #{i}"
   b = "6110.597.#{i}"
@@ -39,13 +39,13 @@ for i in (0..10)
   e = "RC"
   f = 1 + rand(20)
   g = f + 1 + rand(50)
-  ryan.entries.create!(sample: a, charge: b, need_by: c, file_format: d, scan_type: e,
+  another.entries.create!(sample: a, charge: b, need_by: c, file_format: d, scan_type: e,
                        description: Faker::Lorem.sentence(2),
                        conditions: "#{f} to #{g} degrees",
                        instructions: Faker::Lorem.sentence(5))
 end
 
-ex = User.find_by(email: 'ex@hrl.com')
+example = User.find_by(email: 'ex@hrl.com')
 for i in (0..5)
   a = "Samp-Examp-#{i}"
   b = "ABCD.XYZ.#{i}"
@@ -54,7 +54,7 @@ for i in (0..5)
   e = "XRR"
   f = 1 + rand(10)
   g = f + 1 + rand(50)
-  ex.entries.create!(sample: a, charge: b, need_by: c, file_format: d, scan_type: e,
+  example.entries.create!(sample: a, charge: b, need_by: c, file_format: d, scan_type: e,
                        description: Faker::Lorem.sentence(2),
                        conditions: "#{f} to #{g} degrees",
                        instructions: Faker::Lorem.sentence(5))
