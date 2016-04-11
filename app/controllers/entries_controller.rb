@@ -6,8 +6,7 @@ class EntriesController < ApplicationController
   include EntriesHelper
 
   def index
-    @entries = Entry.all
-    split_entries(@entries)
+    split_entries
     @entry = current_user.entries.build if logged_in?
   end
 
