@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+
+    def admin_user
+      unless current_user.admin?
+        flash[:danger] = "Please use the admin account to perform this action."
+        redirect_to request.referrer || root_url
+      end
+    end
+
 end

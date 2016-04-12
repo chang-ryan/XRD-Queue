@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user,   only: [:edit, :destroy]
-  before_action :admin_user,     only: :toggle_scanned
+  before_action :correct_user,   only: [:edit, :destroy, :toggle_scanned]
+  # before_action :admin_user,     only: :toggle_scanned
 
   include EntriesHelper
 
@@ -77,10 +77,4 @@ class EntriesController < ApplicationController
       end
     end
 
-    def admin_user
-      unless current_user.admin?
-        flash[:danger] = "Please use the admin account to perform this action."
-        redirect_to request.referrer || root_url
-      end
-    end
 end

@@ -32,9 +32,13 @@
         <%= f.label :instructions %>
         <%= f.text_area :instructions, placeholder: "Include specific recipe filename (if applicable) and other relevant information" %>
       </div>
-      <div class="field">
+      <div id="need_by" class="field need_by-field">
         <%= f.label :need_by %>
-        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever"] %>
+        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever", "Specific Date"] %>
+      </div>
+      <div id="specific-date" class="field need_by-field-hidden">
+        <%= f.label :need_by, "Specific Date" %>
+        <%= f.text_field :need_by,     placeholder: "MM/DD/YY" %>
       </div>
     </div>
     <%= f.submit "Submit", class: "btn btn-primary" %>

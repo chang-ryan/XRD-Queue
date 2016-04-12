@@ -28,4 +28,14 @@ $(function() {
     $.get(this.action, $(this).serialize(), null, "script");
   })
 
+  // Specific date hidden field toggle
+  $(".need_by-field").on("change", function() {
+    if ($("#need_by option:selected").text().toLowerCase() == "specific date") {
+      $("#specific-date").removeClass("need_by-field-hidden");
+      $("#specific-date input").val("");
+    } else {
+      $("#specific-date").addClass("need_by-field-hidden");
+    }
+  })
+
 });
