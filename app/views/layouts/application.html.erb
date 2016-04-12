@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HRL Laboratories XRD Queue</title>
+  <title>
+    <% if :title %>
+      HRL | <%= yield(:title) %>
+    <% else %>
+      HRL Laboratories XRD Queue
+    <% end %>
+  </title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
