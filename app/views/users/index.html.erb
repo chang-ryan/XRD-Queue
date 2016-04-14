@@ -1,0 +1,30 @@
+<!-- /views/users/index.html.erb -->
+
+<% provide(:title, "Users Controller") %>
+
+<% content_for :section do %>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Department</td>
+        <td>Scans in Queue</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.department %></td>
+        <td><%= user.entries.where(scanned: false).count %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td>Delete</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= render template: 'static_pages/admin_panel' %>

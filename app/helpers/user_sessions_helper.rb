@@ -14,7 +14,11 @@ module UserSessionsHelper
   def logged_in?
     !current_user.nil?
   end
-  
+
+  def admin?
+    !current_user.nil? and current_user.admin
+  end
+
   def log_out
     session.delete(:user_id)
     @current_user = nil

@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: :show
-  before_action :admin_user,     only: :index
+  before_action :admin_user,     only: [:index, :edit]
 
 include EntriesHelper
 
   def index
+    @users = User.all
   end
 
   def show
@@ -38,6 +39,9 @@ include EntriesHelper
     else
       render 'new'
     end
+  end
+
+  def edit
   end
 
   private

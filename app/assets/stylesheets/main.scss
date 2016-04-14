@@ -1,5 +1,7 @@
 header,
-section {
+section,
+footer,
+.container {
   @include outer-container;
   margin-bottom: 2em;
 }

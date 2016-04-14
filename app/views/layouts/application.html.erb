@@ -2,11 +2,7 @@
 <html>
 <head>
   <title>
-    <% if :title %>
       HRL | <%= yield(:title) %>
-    <% else %>
-      HRL Laboratories XRD Queue
-    <% end %>
   </title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -43,7 +39,18 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
   </div>
+
   <%= yield %>
+  <%= yield :admin %>
+
+  <footer>
+    <div class="wrapper">
+      Help About ETC.
+      <% if admin? %>
+        <%= link_to 'Admin Panel', admin_panel_path %>
+      <% end %>
+    </div>
+  </footer>
 
 </body>
 </html>
