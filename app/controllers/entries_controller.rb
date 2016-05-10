@@ -1,13 +1,19 @@
 class EntriesController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user,   only: [:edit, :destroy, :toggle_scanned]
-  # before_action :admin_user,     only: :toggle_scanned
+  before_action :admin_user,     only: :download_and_delete
 
   include EntriesHelper
 
   def index
     split_entries
     @entry = current_user.entries.build if logged_in?
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: Entry.all.to_csv, content_type: 'text/plain' }
+      # format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   def create
@@ -59,6 +65,17 @@ class EntriesController < ApplicationController
     @entry.toggle!(:scanned)
     flash[:success] = "Sample scanned and archived"
     redirect_to request.referrer || root_url
+  end
+
+  def download
+    time = Time.now.strftime "%Y-%m-%d %H:%M"
+    filename = "XRD Export #{time}.csv"
+    send_data Entry.all.to_csv, filename: filename
+  end
+
+  def download_and_delete
+    download
+    Entry.where(:scanned => true).delete_all
   end
 
   private
