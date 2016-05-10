@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :entries
+  has_many :entries, dependent: :destroy
   attr_accessor :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest

@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   resources :users,               except: [:index]
   resources :account_activations, only:   [:edit]
 
-  get 'admin_panel'       => 'static_pages#admin_panel'
-  get 'admin_panel/users' => 'users#index'
+  get 'admin_panel'                    => 'static_pages#admin_panel'
+  get 'admin_panel/users'              => 'users#index'
+  get 'admin_panel/db_manage'          => 'static_pages#db_manage'
+  get 'admin_panel/db_manage/download' => 'entries#download'
+  get 'admin_panel/db_manage/DaD'      => 'entries#download_and_delete'
 
   root to: 'entries#index'
 end

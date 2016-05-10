@@ -41,6 +41,13 @@ include EntriesHelper
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "User deleted"
+    redirect_to request.referrer || root_url
+  end
+
   def edit
   end
 

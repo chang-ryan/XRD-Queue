@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   def admin_panel
   end
 
+  def db_manage
+  end
+
   def help
   end
 

@@ -1,0 +1,20 @@
+<!-- /views/static_pages/db_manage.html.erb -->
+
+<% provide(:title, "Database Management") %>
+
+<% content_for :section do %>
+  <p>
+    <%= link_to "View data as CSV", entries_path(format: "csv") %>
+  </p>
+  <p>
+    <%= link_to "Download as CSV", { :controller => "entries", :action => "download" } %>
+    <br>Downloads ALL entries
+  </p>
+  <p>
+    <%= link_to "Download and wipe entry database", { :controller => "entries", :action => "download_and_delete" },
+        data: { confirm: 'CAUTION! You are about to delete the entire database' } %>
+    <br>Note: this only wipes SCANNED entries
+  </p>
+<% end %>
+
+<%= render template: 'static_pages/admin_panel' %>
