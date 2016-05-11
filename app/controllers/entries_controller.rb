@@ -11,6 +11,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.js
       format.csv { render text: Entry.all.to_csv, content_type: 'text/plain' }
       # format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
