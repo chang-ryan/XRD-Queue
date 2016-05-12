@@ -13,6 +13,10 @@ class StaticPagesController < ApplicationController
   end
 
   def archive
+    @scanned_entries = Entry.where(:scanned => true)
+                                 .order(updated_at: :desc)
+                                 .search(params[:scanned_search])
+                                 .paginate(:per_page => 20, :page => params[:scanned_page])
   end
 
 end

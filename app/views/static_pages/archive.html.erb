@@ -1,1 +1,15 @@
 <!-- static_pages/archive.html.erb -->
+<% provide(:title, "Archived Scans") %>
+
+<section class="content">
+  <h1>Archived Scans</h1>
+
+  <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
+    <div class="floating-search">
+      <%= text_field_tag :scanned_search, params[:scanned_search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </div>
+  <% end %>
+
+  <div id="archive-id"><%= render 'shared/scanned' %></div>
+</section>

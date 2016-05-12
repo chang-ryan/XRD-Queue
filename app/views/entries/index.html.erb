@@ -25,7 +25,8 @@
 
 <!-- Archive -->
 <section class="content">
-  <h1><%= @title2 %></h1>
+  <h1 class="header-with-subtext"><%= @title2 %></h1>
+  <p class="subtext"><%= link_to "See all", archive_path %></p>
 
   <%= form_tag entries_path, :method => 'get', :class => 'search' do %>
   <%= hidden_field_tag :unscanned_search, params[:unscanned_search] %>

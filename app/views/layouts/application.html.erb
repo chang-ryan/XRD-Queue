@@ -36,7 +36,7 @@
 
   <div class="alpha">
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <div class="alert flash-<%= message_type %>"><%= message %></div>
     <% end %>
   </div>
 

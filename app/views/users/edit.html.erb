@@ -1,1 +1,34 @@
-Hi
+<% provide(:title, "#{@user.name}'s Account Settings'") %>
+
+<section id="account-settings">
+  <h2><%= "#{@user.name} Account Settings" %></h2>
+  <div class="entry-form">
+
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="field">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, value: "", placeholder: "#{@user.name}" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :department, "Department" %>
+        <%= f.text_field :department, value: "", placeholder: "#{@user.department}" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</section>

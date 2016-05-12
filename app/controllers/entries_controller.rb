@@ -50,10 +50,6 @@ class EntriesController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-  def edit
-    @entry = Entry.find(params[:id])
-  end
-
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
