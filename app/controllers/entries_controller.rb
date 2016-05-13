@@ -6,13 +6,16 @@ class EntriesController < ApplicationController
   include EntriesHelper
 
   def index
+    # sends instance variables @scanned_entries and @unscanned_entries to views
     split_entries
     @entry = current_user.entries.build if logged_in?
 
+    # sends instance variable to js for precise ajax response
     @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
     @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
 
     # MUST be at the end of method for proper functioning
+    # if @render_switch is below respond_to, it will break
     respond_to do |format|
       format.html
       format.js
