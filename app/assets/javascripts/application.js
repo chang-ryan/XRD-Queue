@@ -26,6 +26,10 @@ $(function() {
   // AJAXify search bar
   $(".search").keyup(function() {
     $.get(this.action, $(this).serialize(), null, "script");
+    console.log(this);
+    console.log(this.action);
+    console.log($(this));
+    console.log($(this).serialize());
   })
 
   // Specific date hidden field toggle

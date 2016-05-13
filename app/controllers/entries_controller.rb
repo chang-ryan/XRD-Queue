@@ -9,6 +9,10 @@ class EntriesController < ApplicationController
     split_entries
     @entry = current_user.entries.build if logged_in?
 
+    @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
+    @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
+
+    # MUST be at the end of method for proper functioning
     respond_to do |format|
       format.html
       format.js

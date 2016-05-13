@@ -1,2 +1,14 @@
-$("#queue-id").html("<%= escape_javascript(render("/shared/unscanned")) %>");
-$("#archive-id").html("<%= escape_javascript(render("/shared/scanned")) %>");
+(function() {
+  var flip = "<%= @render_switch %>";
+
+  console.log("Switch is currently flipped to: <%= @render_switch %>");
+
+  switch(flip) {
+    case "unscanned":
+      $("#queue-id").html("<%= escape_javascript(render("/shared/unscanned")) %>");
+      break;
+    case "scanned":
+      $("#archive-id").html("<%= escape_javascript(render("/shared/scanned")) %>");
+      break;
+  }
+})();
