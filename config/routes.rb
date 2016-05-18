@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'admin_panel/db_manage/DaD'      => 'entries#download_and_delete'
 
   get 'archive' => 'static_pages#archive'
+  get 'about'   => 'static_pages#about'
 
   root to: 'entries#index'
 end

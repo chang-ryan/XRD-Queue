@@ -12,6 +12,9 @@ class StaticPagesController < ApplicationController
   def help
   end
 
+  def about
+  end
+
   def archive
     @scanned_entries = Entry.where(:scanned => true)
                                  .order(updated_at: :desc)

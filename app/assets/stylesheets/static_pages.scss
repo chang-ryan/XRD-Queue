@@ -11,12 +11,14 @@
       text-align: left;
     }
   }
-
-  section {
+  div {
     @include span-columns(10);
     @include omega();
   }
   a.active {
     color: shade($action-color, 50%);
+  }
+  table {
+    margin-top: 0;
   }
 }

@@ -45,7 +45,8 @@
 
   <footer>
     <div class="wrapper">
-      Help About ETC.
+      <%= link_to 'Help', about_path %> 
+      <%= link_to 'About', about_path %>
       <% if admin? %>
         <%= link_to 'Admin Panel', admin_panel_path %>
       <% end %>
