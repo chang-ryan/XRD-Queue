@@ -5,8 +5,15 @@ footer,
   @include outer-container;
   margin-bottom: 2em;
 }
+section,
+footer {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 header {
   margin-top: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 nav {
   text-align: right;
