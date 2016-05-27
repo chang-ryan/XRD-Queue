@@ -43,3 +43,8 @@ $(function() {
   })
 
 });
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  $("input[type='email']").val("xrd-admin@hrl.com");
+  $("input[type='password']").val("galaxy");
+});

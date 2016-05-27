@@ -11,12 +11,6 @@ section,
 footer {
   padding-left: 30px;
   padding-right: 30px;
-  a {
-    padding-left: 10px;
-  }
-  a:first-of-type {
-    padding-left: 0;
-  }
 }
 header {
   margin-top: 25px;
@@ -71,4 +65,12 @@ nav {
 .admin {
   padding-left: 15px;
   padding-right: 15px;
+}
+footer {
+  a {
+    padding-left: 10px;
+  }
+  a:first-of-type {
+    padding-left: 0;
+  }
 }
