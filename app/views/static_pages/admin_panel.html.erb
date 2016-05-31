@@ -1,4 +1,6 @@
-<% provide(:title, "Admin Area") %>
+<% unless content_for?(:section) %>
+  <% provide(:title, "Admin Area") %>
+<% end %>
 
 <div class="admin container">
   <h2>Administrator Panel</h2>
