@@ -82,6 +82,25 @@ class EntriesController < ApplicationController
     Entry.where(:scanned => true).delete_all
   end
 
+  def usage_stats
+    @total_entries_submitted = Entry.all.count
+
+    # @charge_numbers = Entry.uniq.pluck(:charge).map! { |x| x.strip[0,10] }.uniq.sort
+
+    @charge_numbers = Entry.uniq.pluck(:charge).map { |x| x.strip }.sort
+
+    @usage = {}
+
+    @charge_numbers.each do |num|
+      @usage[num] = {}
+      # @usage[num]["percent"] = (Entry.where('charge ~* :pattern', :pattern => num).count / @total_entries_submitted.to_f).round(3)
+      # @usage[num]["total"]   = Entry.where('charge ~* :pattern', :pattern => num).count
+      @usage[num]["percent"] = ((Entry.where(:charge => num).count / @total_entries_submitted.to_f) * 100).round(2)
+      @usage[num]["total"]   = Entry.where(:charge => num).count
+    end
+  end
+
+
   private
 
     def entry_params
