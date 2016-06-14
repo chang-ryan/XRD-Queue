@@ -34,12 +34,12 @@
       </div>
       <div id="need_by" class="field need_by-field">
         <%= f.label :need_by %>
-        <%= f.select :need_by,         ["In Line", "ASAP", "Whenever", "Specific Date"] %>
+        <%= f.select :need_by, ["In Line", "ASAP", "Whenever"] %>
       </div>
-      <div id="specific-date" class="field need_by-field-hidden">
+      <!-- <div id="specific-date" class="field need_by-field-hidden">
         <%= f.label :need_by, "Specific Date" %>
         <%= f.text_field :need_by,     placeholder: "MM/DD/YY" %>
-      </div>
+      </div> -->
     </div>
     <%= f.submit "Submit", class: "btn btn-primary" %>
     <div>* denotes required field.</div>
