@@ -20,9 +20,9 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.js do
-        if params[:unscanned_search]
+        if params[:unscanned_search] or params[:unscanned_page]
           render template: "entries/unscanned.js"
-        elsif params[:scanned_search]
+        elsif params[:scanned_search] or params[:scanned_page]
           render template: "entries/scanned.js"
         end
       end
