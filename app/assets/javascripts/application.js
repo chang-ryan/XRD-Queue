@@ -26,9 +26,9 @@ $(function() {
   // AJAXify search bar
   $(".search").keyup(function() {
     $.get(this.action, $(this).serialize(), null, "script");
-    console.log(this);
-    console.log(this.action);
-    console.log($(this));
+    console.log("this", this);
+    console.log("this.action", this.action);
+    console.log("$(this)", $(this));
     console.log($(this).serialize());
   })
 

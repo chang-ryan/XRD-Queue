@@ -10,15 +10,22 @@ class EntriesController < ApplicationController
     split_entries
     @entry = current_user.entries.build if logged_in?
 
-    # sends instance variable to js for precise ajax response
-    @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
-    @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
+    ###########
+    # DEPRECATION!!!!!!! no need to create new instance variables/ waste memory
+    # # sends instance variable to js for precise ajax response
+    # @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
+    # @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
+    ###########
 
-    # MUST be at the end of method for proper functioning
-    # if @render_switch is below respond_to, it will break
     respond_to do |format|
       format.html
-      format.js
+      format.js do
+        if params[:unscanned_search]
+          render template: "entries/unscanned.js"
+        elsif params[:scanned_search]
+          render template: "entries/scanned.js"
+        end
+      end
       format.csv { render text: Entry.all.to_csv, content_type: 'text/plain' }
       # format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
