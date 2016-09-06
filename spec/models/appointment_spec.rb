@@ -3,8 +3,12 @@ require 'rails_helper'
 RSpec.describe Appointment, type: :model do
   before do
     @ryan = User.create(name: 'Ryan', email: 'rchang@hrl.com', password: 'asdf', password_confirmation: 'asdf')
+
+    # define start and end points
     @start_time = Time.now
     @end_time   = @start_time + 2000
+
+    # commit to database so that one appointment exists to be overlapped with
     @appt = @ryan.appointments.create(start_time: @start_time, end_time: @end_time)
   end
 
