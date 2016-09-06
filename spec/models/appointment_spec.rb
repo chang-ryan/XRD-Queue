@@ -39,6 +39,10 @@ RSpec.describe Appointment, type: :model do
     end
   end
 
+  it 'is invalid when start time is equal to end time' do
+    expect(Appointment.new(start_time: @end_time+1, end_time: @end_time+1)).to_not be_valid
+  end
+
   it 'is valid with all correct fields' do
     expect(@ryan.appointments.new(start_time: @end_time+1, end_time: @end_time+2000)).to be_valid
   end

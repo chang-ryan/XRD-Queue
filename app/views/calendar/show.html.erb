@@ -1,0 +1,47 @@
+<!-- views/calendar/show.html.erb -->
+<% provide(:title, "Schedule an Appointment") %>
+
+<section class="container">
+  <h1>Schedule an Appointment</h1>
+  <h2><%= @date %></h2>
+  <%= form_for @appointment do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field-container">
+      <div class="field">
+        <%= f.label :start_hour, "Start Time*" %>
+        <%= f.text_field :start_hour %>
+      </div>
+      <div class="field">
+        <%= f.label :end_hour, "End Time*" %>
+        <%= f.text_field :end_hour %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
+    <%= hidden_field(:appointment, :date, :value => @date) %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <div>* denotes required field.</div>
+  <% end %>
+</section>
+
+<section>
+  <div class="calendar-container">
+    <h2>This day's appointments</h2>
+    <table>
+      <thead>
+        <th>Time</th>
+        <th>User</th>
+        <th>Notes</th>
+        <th>Email</th>
+      </thead>
+      <tbody>
+        <td>14:00 - 15:00</td>
+        <td>Ryan Chang</td>
+        <td>Scanning SiGe wafers</td>
+        <td>rchang@hrl.com</td>
+      </tbody>
+    </table>
+  </div>
+</section>

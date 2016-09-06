@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe CalendarController, type: :controller do
+RSpec.describe AppointmentsController, type: :controller do
   describe "GET index" do
-    it "assigns @date" do
+    it "assigns @teams" do
+      team = Team.create
       get :index
-      expect(assigns(:date)).to be_a(Date)
+      expect(assigns(:teams)).to eq([team])
     end
 
     it "renders the index template" do
