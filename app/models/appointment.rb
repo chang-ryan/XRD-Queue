@@ -9,7 +9,7 @@ class Appointment < ApplicationRecord
 
   scope :overlapping, ->(appt) {
      where(%q{ (start_time, end_time) OVERLAPS (?,?) }, appt.start_time, appt.end_time)
-    .where(%q{ id != ? }, appt.id)
+    .where(%q{ id IS NOT NULL OR id != ? }, appt.id)
   }
 
   def find_overlapping
@@ -24,7 +24,7 @@ class Appointment < ApplicationRecord
 
     def overlapping_appointments
       if overlapping?
-        errors[:overlapping] = "This appointment overlaps with another"
+        errors.add(:overlapping, "This appointment overlaps with another")
       end
     end
 end

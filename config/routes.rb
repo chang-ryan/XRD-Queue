@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users,               except: [:index]
   resources :account_activations, only:   [:edit]
 
+  resources :calendar
+
   get 'admin_panel'                    => 'static_pages#admin_panel'
   get 'admin_panel/users'              => 'users#index'
   get 'admin_panel/db_manage'          => 'static_pages#db_manage'
