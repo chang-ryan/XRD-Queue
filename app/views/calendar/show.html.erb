@@ -9,11 +9,11 @@
     <div class="field-container">
       <div class="field">
         <%= f.label :start_hour, "Start Time*" %>
-        <%= f.text_field :start_hour %>
+        <%= f.text_field :start_hour, placeholder: "12:00 PM" %>
       </div>
       <div class="field">
         <%= f.label :end_hour, "End Time*" %>
-        <%= f.text_field :end_hour %>
+        <%= f.text_field :end_hour, placeholder: "1:30 PM" %>
       </div>
     </div>
     <div class="field">
@@ -37,10 +37,14 @@
         <th>Email</th>
       </thead>
       <tbody>
-        <td>14:00 - 15:00</td>
-        <td>Ryan Chang</td>
-        <td>Scanning SiGe wafers</td>
-        <td>rchang@hrl.com</td>
+        <% @appointments_today.each do |appt| %>
+          <tr>
+            <td><%= appt.start_time.strftime('%H:%M') %> - <%= appt.end_time.strftime('%H:%M') %></td>
+            <td><%= appt.user.name %></td>
+            <td><%= appt.notes %></td>
+            <td><%= appt.user.email %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

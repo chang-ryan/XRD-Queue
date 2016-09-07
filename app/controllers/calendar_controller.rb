@@ -6,6 +6,7 @@ class CalendarController < ApplicationController
 
   def show
     @date = Date.parse(params[:id])
+    @appointments_today = Appointment.where("start_time::date = ?", params[:id]).order(start_time: :asc)
     @appointment = current_user.appointments.build if logged_in?
   end
 end

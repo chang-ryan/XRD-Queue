@@ -1,5 +1,8 @@
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.timeAutocomplete.min
+//= require jquery.timepicker.min
 
 $(function() {
 
@@ -30,4 +33,15 @@ $(function() {
     }
   });
 
+  // $("#appointment_start_hour").timeAutocomplete({
+  //   increment: 30,
+  //   start_hour: 7,
+  //   end_hour: 18,
+  //   auto_value: false
+  // });
+
+  $("#appointment_end_hour, #appointment_start_hour").timepicker({
+    'minTime': '7:00am',
+    'maxTime': '5:00pm'
+  });
 });
