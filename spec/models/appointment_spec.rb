@@ -43,6 +43,10 @@ RSpec.describe Appointment, type: :model do
     expect(Appointment.new(start_time: @end_time+1, end_time: @end_time+1)).to_not be_valid
   end
 
+  it 'is invalid when going back in time' do
+    expect(Appointment.new(start_time: Time.parse('01:00'), end_time: Time.parse('00:00'))).to_not be_valid
+  end
+
   it 'is valid with all correct fields' do
     expect(@ryan.appointments.new(start_time: @end_time+1, end_time: @end_time+2000)).to be_valid
   end

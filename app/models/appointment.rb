@@ -6,6 +6,7 @@ class Appointment < ApplicationRecord
   validates :user_id,    presence: true
 
   validate :overlapping_appointments
+  validate :times_arrow
 
   scope :overlapping, ->(appt) {
      where(%q{ (start_time, end_time) OVERLAPS (?,?) }, appt.start_time, appt.end_time)
@@ -43,6 +44,14 @@ class Appointment < ApplicationRecord
     def overlapping_appointments
       if overlapping?
         errors.add(:overlapping, "This appointment overlaps with another")
+      end
+    end
+
+    def times_arrow
+      return if self.start_time.nil?
+      return if self.end_time.nil?
+      if self.start_time > self.end_time
+        errors.add(:backwards, "You can't travel back in time")
       end
     end
 end

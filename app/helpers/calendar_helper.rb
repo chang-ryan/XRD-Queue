@@ -4,7 +4,7 @@ module CalendarHelper
   end
 
   class Calendar < Struct.new(:view, :date, :callback)
-    HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
+    HEADER    = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :sunday
 
     delegate :content_tag, to: :view
@@ -16,7 +16,7 @@ module CalendarHelper
     end
 
     def header
-      content_tag :tr do
+      content_tag :thead do
         HEADER.map { |day| content_tag :th, day }.join.html_safe
       end
     end
@@ -40,6 +40,7 @@ module CalendarHelper
       classes.empty? ? nil : classes.join(" ")
     end
 
+    # wow activesupport magic down here
     def weeks
       first = date.beginning_of_month.beginning_of_week(START_DAY)
       last = date.end_of_month.end_of_week(START_DAY)

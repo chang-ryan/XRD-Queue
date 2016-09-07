@@ -1,7 +1,9 @@
 class CalendarController < ApplicationController
+  before_action :logged_in_user, only: :show
+
   def index
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @events_by_date = Appointment.all.group_by { |item| item.send(:start_time).strftime('%Y-%m-%d')}
+    @events_by_date = Appointment.all.order('start_time ASC').group_by { |item| item.send(:start_time).strftime('%Y-%m-%d')}
   end
 
   def show

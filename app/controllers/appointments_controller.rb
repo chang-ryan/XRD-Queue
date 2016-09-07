@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
 
   def create
     start_time = Time.parse("#{appointment_params[:date]} at #{appointment_params[:start_hour]}")
-    end_time   = Time.parse("#{appointment_params[:date]} at #{appointment_params[:end_hour]}")
+    end_time   = Time.parse("#{appointment_params[:date]} at #{appointment_params[:end_hour]}").-(1)
     notes      = appointment_params[:notes]
     @appointment = current_user.appointments.build(start_time: start_time, end_time: end_time, notes: notes)
     if @appointment.save

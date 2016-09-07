@@ -42,6 +42,7 @@ $(function() {
 
   $("#appointment_end_hour, #appointment_start_hour").timepicker({
     'minTime': '7:00am',
-    'maxTime': '5:00pm'
+    'maxTime': '5:00pm',
+    'forceRoundTime': true
   });
 });

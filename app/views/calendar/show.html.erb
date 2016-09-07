@@ -39,7 +39,7 @@
       <tbody>
         <% @appointments_today.each do |appt| %>
           <tr>
-            <td><%= appt.start_time.strftime('%H:%M') %> - <%= appt.end_time.strftime('%H:%M') %></td>
+            <td><%= appt.start_time.strftime("%H:%M") %> - <%= appt.end_time.strftime("%H:%M") %></td>
             <td><%= appt.user.name %></td>
             <td><%= appt.notes %></td>
             <td><%= appt.user.email %></td>
@@ -48,4 +48,8 @@
       </tbody>
     </table>
   </div>
+</section>
+
+<section>
+  <%= link_to "Back", calendar_index_path, { :class => 'btn' } %>
 </section>
