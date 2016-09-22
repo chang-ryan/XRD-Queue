@@ -13,7 +13,12 @@ class UserSessionsController < ApplicationController
         else
           flash[:success] = 'You have successfully logged in'
         end
-        redirect_to session[:forwarding_url]
+
+        if session[:forwarding_url]
+          redirect_to session[:forwarding_url]
+        else
+          redirect_to user
+        end
       # else
       #   message  = "Account not activated. "
       #   message += "Check your email for activation link."
