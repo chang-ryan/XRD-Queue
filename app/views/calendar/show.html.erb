@@ -51,5 +51,5 @@
 </section>
 
 <section>
-  <%= link_to "Back", calendar_index_path, { :class => 'btn' } %>
+  <%= link_to "Back", request.referrer ? request.referrer : calendar_index_path, { :class => 'btn' } %>
 </section>
