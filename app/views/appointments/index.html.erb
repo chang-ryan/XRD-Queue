@@ -1,0 +1,36 @@
+<!-- views/appointments/index.html.erb -->
+<% provide(:title, "Your Appointments") %>
+
+<section class="content">
+  <h1>Your Appointments</h1>
+  <% if @appointments %>
+    <div class="calendar-container">
+      <table>
+        <thead>
+          <th>Date</th>
+          <th>Time</th>
+          <th>User</th>
+          <th>Notes</th>
+          <th>Email</th>
+        </thead>
+        <tbody>
+          <% @appointments.each do |appt| %>
+            <tr>
+              <td><%= appt.start_time.strftime("%e %b %y") %></td>
+              <td><%= appt.start_time.strftime("%H:%M") %> - <%= appt.end_time.strftime("%H:%M") %></td>
+              <td><%= appt.user.name %></td>
+              <td><%= appt.notes %></td>
+              <td><%= appt.user.email %></td>
+              <td><%= link_to "Delete", appt, method: :delete, data: { confirm: "Are you sure?" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p>No appointments scheduled!</p>
+  <% end %>
+  <div>
+    <p>To edit an existing appointment, please delete the existing appointment and schedule a new one</p>
+  </div>
+</section>

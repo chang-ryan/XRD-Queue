@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @appointments = @user.appointments
+    @appointments = current_user.appointments.order(:start_time)
   end
 
   def create
@@ -20,6 +19,13 @@ class AppointmentsController < ApplicationController
       end
       redirect_to request.referrer
     end
+  end
+
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    flash[:success] = "Appointment deleted"
+    redirect_to appointments_path
   end
 
   private
