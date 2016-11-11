@@ -1,4 +1,6 @@
-<% provide(:title, "Admin Area") %>
+<% unless content_for?(:section) %>
+  <% provide(:title, "Admin Area") %>
+<% end %>
 
 <div class="admin container">
   <h2>Administrator Panel</h2>
@@ -7,6 +9,7 @@
       <ul>
         <li><%= nav_link 'Users',               admin_panel_users_path %></li>
         <li><%= nav_link 'Database Management', admin_panel_db_manage_path %></li>
+        <li><%= nav_link 'Usage Statistics',    admin_panel_usage_stats_path %></li>
       </ul>
     </nav>
   </aside>

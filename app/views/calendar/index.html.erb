@@ -1,0 +1,28 @@
+<!-- views/calendar/index.html.erb -->
+<% provide(:title, "Calendar") %>
+
+<section class="content">
+  <div class="calendar-container">
+    <h1>Appointment Calendar</h1>
+    <h2>
+      <span><%= link_to raw("&larr;"), calendar_index_path(:date => "#{@date.prev_month}") %></span> <%= @date.strftime("%B %Y") %> <span><%= link_to raw("&rarr;"), calendar_index_path(:date => "#{@date.next_month}") %></span>
+    </h2>
+    <%= calendar @date do |date| %>
+      <span class="date-number"><%= date.day %></span>
+      <div class="calendar-box">
+        <%= link_to calendar_path(date) do %>
+          <% if @events_by_date[date.strftime('%Y-%m-%d')] %>
+            <ul>
+              <% @events_by_date[date.strftime('%Y-%m-%d')].each do |event| %>
+                <li>
+                  <span><%= event.user.name %></span>
+                  <%= event.start_time.strftime('%H:%M') %> - <%= event.end_time.strftime('%H:%M') %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>

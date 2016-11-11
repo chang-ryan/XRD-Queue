@@ -1,0 +1,51 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.calendar-container {
+  max-width: 960px;
+}
+
+.calendar {
+  td {
+    background: rgba(16,117,188,0.5);
+    border: 1px dotted gray;
+    height: 120px;
+    padding: 0.5em 0.5em;
+    position: relative;
+
+    &:hover {
+      opacity: 0.5;
+    }
+    span.date-number {
+      position: absolute;
+      top: 0.5em;
+      left: 0.5em;
+      font-size: 0.7em;
+    }
+    li {
+      font-size: 0.9em;
+    }
+  }
+
+  td.not-month {
+    background: #e0e0e0;
+  }
+}
+
+.calendar-box {
+  width: 100%;
+  height: 100%;
+  padding-top: 0.5em;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

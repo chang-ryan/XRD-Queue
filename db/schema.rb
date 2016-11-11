@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404172930) do
+ActiveRecord::Schema.define(version: 20160902181149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "notes"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  end
 
   create_table "entries", force: :cascade do |t|
     t.string   "sample"
@@ -29,10 +38,9 @@ ActiveRecord::Schema.define(version: 20160404172930) do
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.index ["user_id", "created_at"], name: "index_entries_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_entries_on_user_id", using: :btree
   end
-
-  add_index "entries", ["user_id", "created_at"], name: "index_entries_on_user_id_and_created_at", using: :btree
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -45,9 +53,9 @@ ActiveRecord::Schema.define(version: 20160404172930) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
+  add_foreign_key "appointments", "users"
   add_foreign_key "entries", "users"
 end
