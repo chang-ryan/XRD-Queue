@@ -59,3 +59,11 @@ for i in (0..5)
                        conditions: "#{f} to #{g} degrees",
                        instructions: Faker::Lorem.sentence(5))
 end
+
+admin = User.find_by(email: 'xrd-admin@hrl.com')
+today = Date.today
+for i in (0..5)
+  start_time = Time.parse("#{today+i} at 9:00am")
+  end_time   = Time.parse("#{today+i} at 9:59am")
+  admin.appointments.create!(start_time: start_time, end_time: end_time)
+end
