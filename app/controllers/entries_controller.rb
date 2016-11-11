@@ -10,15 +10,22 @@ class EntriesController < ApplicationController
     split_entries
     @entry = current_user.entries.build if logged_in?
 
-    # sends instance variable to js for precise ajax response
-    @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
-    @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
+    ###########
+    # DEPRECATION!!!!!!! no need to create new instance variables/ waste memory
+    # # sends instance variable to js for precise ajax response
+    # @render_switch = "scanned" if !params[:scanned_search].nil? or !params[:scanned_page].nil?
+    # @render_switch = "unscanned" if !params[:unscanned_search].nil? or !params[:unscanned_page].nil?
+    ###########
 
-    # MUST be at the end of method for proper functioning
-    # if @render_switch is below respond_to, it will break
     respond_to do |format|
       format.html
-      format.js
+      format.js do
+        if params[:unscanned_search] or params[:unscanned_page]
+          render template: "entries/unscanned.js"
+        elsif params[:scanned_search] or params[:scanned_page]
+          render template: "entries/scanned.js"
+        end
+      end
       format.csv { render text: Entry.all.to_csv, content_type: 'text/plain' }
       # format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
@@ -82,10 +89,29 @@ class EntriesController < ApplicationController
     Entry.where(:scanned => true).delete_all
   end
 
+  def usage_stats
+    @total_entries_submitted = Entry.all.count
+
+    # @charge_numbers = Entry.uniq.pluck(:charge).map! { |x| x.strip[0,10] }.uniq.sort
+
+    @charge_numbers = Entry.uniq.pluck(:charge).map { |x| x.strip }.sort
+
+    @usage = {}
+
+    @charge_numbers.each do |num|
+      @usage[num] = {}
+      # @usage[num]["percent"] = (Entry.where('charge ~* :pattern', :pattern => num).count / @total_entries_submitted.to_f).round(3)
+      # @usage[num]["total"]   = Entry.where('charge ~* :pattern', :pattern => num).count
+      @usage[num]["percent"] = ((Entry.where(:charge => num).count / @total_entries_submitted.to_f) * 100).round(2)
+      @usage[num]["total"]   = Entry.where(:charge => num).count
+    end
+  end
+
+
   private
 
     def entry_params
-      params.require(:entry).permit(:sample, :charge, :need_by, :file_format, :scan_type, :description, :instructions, :conditions)
+      params.require(:entry).permit(:sample, :charge, :need_by, :need_by_other, :file_format, :scan_type, :description, :instructions, :conditions)
     end
 
     def correct_user

@@ -12,7 +12,7 @@
 
   <header>
     <div class="wrapper wrapper-space_between">
-      <h1>HRL Laboratories X-Ray Diffraction</h1>
+      <h1><a href="/">HRL Laboratories X-Ray Diffraction</a></h1>
       <nav class="main-nav">
         <ul>
           <li><%= link_to "Home", root_path %></li>
@@ -23,6 +23,12 @@
           </li>
           <li>
             <%= link_to "Your Queue", current_user %>
+          </li>
+          <li>
+            <%= link_to "Your Appointments", appointments_path %>
+          </li>
+          <li>
+            <%= link_to "Calendar", calendar_index_path %>
           </li>
           <% else %>
           <li>
@@ -45,7 +51,7 @@
 
   <footer>
     <div class="wrapper">
-      <%= link_to 'Help', about_path %> 
+      <%= link_to 'Help', about_path %>
       <%= link_to 'About', about_path %>
       <% if admin? %>
         <%= link_to 'Admin Panel', admin_panel_path %>

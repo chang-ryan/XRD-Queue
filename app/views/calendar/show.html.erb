@@ -1,0 +1,55 @@
+<!-- views/calendar/show.html.erb -->
+<% provide(:title, "Schedule an Appointment") %>
+
+<section class="container">
+  <h1>Schedule an Appointment</h1>
+  <h2><%= @date %></h2>
+  <%= form_for @appointment do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field-container">
+      <div class="field">
+        <%= f.label :start_hour, "Start Time*" %>
+        <%= f.text_field :start_hour, placeholder: "12:00 PM" %>
+      </div>
+      <div class="field">
+        <%= f.label :end_hour, "End Time*" %>
+        <%= f.text_field :end_hour, placeholder: "1:30 PM" %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
+    <%= hidden_field(:appointment, :date, :value => @date) %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <div>* denotes required field.</div>
+  <% end %>
+</section>
+
+<section>
+  <div class="calendar-container">
+    <h2>This day's appointments</h2>
+    <table>
+      <thead>
+        <th>Time</th>
+        <th>User</th>
+        <th>Notes</th>
+        <th>Email</th>
+      </thead>
+      <tbody>
+        <% @appointments_today.each do |appt| %>
+          <tr>
+            <td><%= appt.start_time.strftime("%H:%M") %> - <%= appt.end_time.strftime("%H:%M") %></td>
+            <td><%= appt.user.name %></td>
+            <td><%= appt.notes %></td>
+            <td><%= appt.user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <%= link_to "Back", request.referrer ? request.referrer : calendar_index_path, { :class => 'btn' } %>
+</section>

@@ -1,3 +1,8 @@
+/*
+ *= require jquery-ui
+ *= require jquery.timepicker
+ */
+
 @import "bourbon";
 @import "neat";
 @import "base/base";
@@ -5,3 +10,4 @@
 @import "entries";
 @import "static_pages";
 @import "users";
+@import "calendar";
