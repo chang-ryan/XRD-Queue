@@ -9,4 +9,4 @@ This app was created for the usage of an X-ray diffractometer. A sample, a silic
 2. Calendar appointment system
 3. Archive for scanned samples
 
-A demo with dummy data is available [here](https://polar-forest-18181.herokuapp.com/).
+A demo with dummy data is available [here](https://pacific-springs-99060.herokuapp.com/).
