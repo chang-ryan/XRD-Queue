@@ -5,6 +5,22 @@ class ApplicationController < ActionController::Base
 
   include UserSessionsHelper
 
+  before_filter :get_notice
+
+  def set_notice
+    if Notice.first
+      Notice.first.update(body: params[:notice_message])
+    else
+      Notice.create(body: params[:notice_message])
+    end
+
+    redirect_to request.referrer || root_url
+  end
+
+  def get_notice
+    @notice = Notice.first.body if Notice.first
+  end
+
   private
 
     def logged_in_user

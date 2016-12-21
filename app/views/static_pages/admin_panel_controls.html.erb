@@ -1,0 +1,15 @@
+<!-- /views/static_pages/admin_panel_controls.html.erb -->
+
+<% provide(:title, "Controls") %>
+
+<% content_for :section do %>
+  <div>
+    <%= form_tag("/notice", action: "post") do %>
+      <%= label_tag(:notice_message, "Set Notice:") %>
+      <%= text_field_tag(:notice_message) %>
+      <%= submit_tag("Submit") %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render template: 'static_pages/admin_panel' %>

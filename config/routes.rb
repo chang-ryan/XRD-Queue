@@ -20,9 +20,12 @@ Rails.application.routes.draw do
   get 'admin_panel/db_manage/download' => 'entries#download'
   get 'admin_panel/db_manage/DaD'      => 'entries#download_and_delete'
   get 'admin_panel/usage_stats'        => 'entries#usage_stats'
+  get 'admin_panel/controls'           => 'static_pages#admin_panel_controls'
 
   get 'archive' => 'static_pages#archive'
   get 'about'   => 'static_pages#about'
+
+  post 'notice' => 'static_pages#set_notice'
 
   root to: 'entries#index'
 end

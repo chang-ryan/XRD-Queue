@@ -46,6 +46,12 @@
     <% end %>
   </div>
 
+  <% if @notice != nil && @notice.size > 0 %>
+    <div class="alpha">
+      <div class="alert flash-danger"><%= @notice %></div>
+    </div>
+  <% end %>
+
   <%= yield %>
   <%= yield :admin %>
 
